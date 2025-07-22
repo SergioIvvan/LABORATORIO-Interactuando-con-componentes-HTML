@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encuesta de Intereses</title>
+</head>
+<body>
+  <h3>¿Qué te interesa más?</h3>
+
+  <button onclick="votar('web')">Diseño Web</button>
+  Votos: <span id="votos-web">0</span><br><br>
+
+  <button onclick="votar('js')">JavaScript</button>
+  Votos: <span id="votos-js">0</span><br><br>
+
+  <button onclick="votar('bd')">Bases de Datos</button>
+  Votos: <span id="votos-bd">0</span><br><br>
+
+  <script>
+    // Objeto para llevar la cuenta de los votos
+    let votos = { web: 0, js: 0, bd: 0 };
+    let totalVotos = 0;
+
+    function votar(opcion) {
+      // Incrementamos votos
+      votos[opcion]++;
+      totalVotos++;
+
+      // Usamos variable temporal para acceder al <span> correspondiente
+      let elementoVoto = document.getElementById(`votos-${opcion}`);
+      elementoVoto.textContent = votos[opcion];
+
+      // Agradecimiento
+      alert("¡Gracias por tu voto!");
+
+      // Mostrar total acumulado cada 5 votos
+      if (totalVotos % 5 === 0) {
+        console.log("Votos totales acumulados:", totalVotos);
+      }
+    }
+  </script>
+</body>
+</html>

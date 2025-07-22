@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+</head>
+<body>
+
+  <h2>Productos disponibles:</h2>
+
+  <p>
+    Producto: Camiseta Geek ($100000)
+    <button onclick="agregarAlCarrito('Camiseta Geek', 100000)">Agregar al carrito</button>
+  </p>
+
+  <p>
+    Producto: Poster Anime ($50000)
+    <button onclick="agregarAlCarrito('Poster Anime', 50000)">Agregar al carrito</button>
+  </p>
+
+  <p>
+    Producto: Figura Coleccionable ($300000)
+    <button onclick="agregarAlCarrito('Figura Coleccionable', 300000)">Agregar al carrito</button>
+  </p>
+
+  <h3>Resumen del carrito:</h3>
+  Items totales: <span id="total-items">0</span><br>
+  Precio total: $<span id="total-precio">0</span><br><br>
+
+  <button onclick="vaciarCarrito()">Vaciar carrito</button>
+
+  <script>
+    let totalItems = 0;
+    let totalPrecio = 0;
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      totalItems++;
+      totalPrecio += precio;
+      carrito.push(nombre);
+
+      // Actualiza los contadores en pantalla
+      document.getElementById("total-items").textContent = totalItems;
+      document.getElementById("total-precio").textContent = totalPrecio;
+
+      // Alerta si el total supera 50
+      if (totalPrecio > 500000) {
+        alert("¡Envío gratis aplicado!");
+      }
+
+      // Mostrar productos en consola
+      console.log("Productos en el carrito:", carrito);
+    }
+
+    function vaciarCarrito() {
+      totalItems = 0;
+      totalPrecio = 0;
+      carrito = [];
+
+      document.getElementById("total-items").textContent = "0";
+      document.getElementById("total-precio").textContent = "0";
+
+      alert("Carrito vaciado");
+    }
+  </script>
+
+</body>
+</html>
