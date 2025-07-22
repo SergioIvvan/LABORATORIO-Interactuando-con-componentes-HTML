@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de intereses</title>
+</head>
+<body>
+    <h3>¿Que tema te parece mas interesante?</h3>
+
+    <button onclick="votar('web')">Diseño Web</button>
+    Votos: <span id="votos-web">0</span><br><br>
+
+    <button onclick="votar('js')">JavaScript</button>
+    Votos: <span id="votos-js">0</span><br><br>
+
+    <button onclick="votar('bd')">Bases de Datos</button>
+    Votos: <span id="votos-bd">0</span><br><br>
+
+    <script>
+        // Contador de Votos
+        let votos={web: 0, js: 0, bd: 0,};
+
+        let totalVotos= 0;
+
+        function votar(opcion){
+            votos[opcion]++;
+            totalVotos++;
+            let elementoVoto = document.getElementById(`votos-${opcion}`);
+            elementoVoto.textContent = votos[opcion];
+
+            alert("GRACIAS POR TU VOTO")
+
+            if (totalVotos % 5 ===0){
+                console.log("Votos Totales: ", totalVotos);
+                
+            }
+        }
+    </script>
+</body>
+</html>
